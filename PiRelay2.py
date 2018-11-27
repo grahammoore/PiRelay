@@ -6,8 +6,8 @@
 # Project: PiRelay2
 # Python: 3.6
 
-import MockRPi.GPIO as GPIO
-# import RPi.GPIO as GPIO
+#import MockRPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 
 class Relay:
@@ -31,10 +31,10 @@ class Relay:
 
 class Board:
 
-    RELAY_1 = Relay(1, 15)
-    RELAY_2 = Relay(2, 13)
-    RELAY_3 = Relay(3, 11)
-    RELAY_4 = Relay(4, 7)
+    RELAY_1 = None
+    RELAY_2 = None
+    RELAY_3 = None
+    RELAY_4 = None
 
     show_operations = True
 
@@ -42,6 +42,10 @@ class Board:
     def init(cls):
         GPIO.setmode(GPIO.BOARD)
         GPIO.setwarnings(False)
+        cls.RELAY_1 = Relay(1, 15)
+        cls.RELAY_2 = Relay(2, 13)
+        cls.RELAY_3 = Relay(3, 11)
+        cls.RELAY_4 = Relay(4, 7)
 
     @classmethod
     def output_on(cls):
@@ -54,4 +58,8 @@ class Board:
     @classmethod
     def is_output_on(cls):
         return cls.show_operations
+
+
+def __init__():
+    Board.init()
 
