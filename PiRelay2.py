@@ -60,6 +60,3 @@ class Board:
         return cls.show_operations
 
 
-def __init__():
-    Board.init()
-
